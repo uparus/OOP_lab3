@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <conio.h>
-#include "OOP_lab3/pch.h"
+#include "pch.h"
 using namespace std;
 
 int getCleanKey() {
@@ -11,6 +11,7 @@ int getCleanKey() {
     }
     return key;
 }
+
 
 int main() {
     Fifteen game(4);

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
-#include "OOP_lab3/Field.h"
+#include "Field.h"
 using namespace std;
 
-Field::Field(size_t const& size = 4) : size(size) {
+Field::Field(size_t const& size) : size(size) {
     generateStartField(size);
 }
 void Field::generateStartField(size_t const& size) {

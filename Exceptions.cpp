@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include "OOP_lab3/Exceptions.h"
+#include "Exceptions.h"
 using namespace std;
 
 char Exceptions::allowedIndex() {

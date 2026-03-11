@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
-#include "OOP_lab3/Fifteen.h"
+#include "Fifteen.h"
 using namespace std;
 
 Fifteen::Fifteen(size_t size) {
