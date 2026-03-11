@@ -14,7 +14,7 @@ private:
     Field& operator=(const Field&) = delete;
 
 public:
-    Field(size_t const& size = 4) : size(size);
+    Field(size_t const& size = 4);
     void generateStartField(size_t const& size = 4);
 
     size_t getSize() const { return size; }
