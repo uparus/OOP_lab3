@@ -11,7 +11,7 @@ private:
     Field game_field;
     int count;
 public:
-    Fifteen(size_t size);
+    Fifteen(size_t& size);
 
     int gameSize() const;
     int getCount() const;

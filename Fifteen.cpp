@@ -4,8 +4,9 @@
 #include "Fifteen.h"
 using namespace std;
 
-Fifteen::Fifteen(size_t size) {
-    game_field.generateStartField(size);
+Fifteen::Fifteen(size_t& size) : count{ 0 },game_field(size) {
+    //game_field.generateStartField(size);
+    game_field.shuffleField();
 }
 int Fifteen::getCount() const { return count; }
 void Fifteen::draw() const {
@@ -18,7 +19,7 @@ void Fifteen::draw() const {
             cout << endl;
         }
         else {
-            cout << " ";
+            cout << "\t";
         }
     }
 }
@@ -32,24 +33,26 @@ bool Fifteen::isGameOver() const {
 
     return field[size * size - 1] == 0;
 }
+
+enum options{ARROW_UP = 72, ARROW_DOWN = 80, ARROW_LEFT = 75, ARROW_RIGHT = 77};
 void Fifteen::onKeyPressed(int const& btnCone) {
     switch (btnCone) {
-    case 72: {
+    case options::ARROW_UP: {
         game_field.shiftUp();
         count++;
         break;
     }
-    case 80: {
+    case options::ARROW_DOWN: {
         game_field.shiftDown();
         count++;
         break;
     }
-    case 75: {
+    case options::ARROW_LEFT: {
         game_field.shiftLeft();
         count++;
         break;
     }
-    case 77: {
+    case options::ARROW_RIGHT: {
         game_field.shiftRight();
         count++;
         break;

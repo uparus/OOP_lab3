@@ -14,10 +14,11 @@ int getCleanKey() {
 
 
 int main() {
-    Fifteen game(4);
+    size_t size = 6;
+    Fifteen game(size);
     do  {
         system("cls");
-        cout << "Table size: " << game.gameSize() << "x" << game.gameSize();
+        cout << "Table size: " << game.gameSize() << "x" << game.gameSize() << endl;
         game.draw();
         cout << "\nMoves: " << game.getCount() << endl;
 

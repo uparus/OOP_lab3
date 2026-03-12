@@ -1,5 +1,5 @@
-#pragma once
-class Exceptions
-{
-	char allowedIndex();
-};
+//#pragma once
+//class Exceptions
+//{
+//	char allowedIndex();
+//};
