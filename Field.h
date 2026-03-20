@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <conio.h>
+
 using namespace std;
 class Field
 {
@@ -14,18 +14,23 @@ private:
     Field& operator=(const Field&) = delete;
 
 public:
-    Field(size_t const& size = 4) : size(size);
+    Field(size_t const& size = 4);
     void generateStartField(size_t const& size = 4);
 
-    size_t getSize() const { return size; }
-    size_t getZeroIndex() const { return zeroIndex; }
+
+    size_t getSize() const;
+    size_t getZeroIndex() const;
     vector<int> getField() const;
 
     void shiftUp();
     void shiftLeft();
     void shiftDown();
     void shiftRight();
+    void shuffleField();
     ~Field() {
         delete[] field;
     }
 };
+
+    bool operator == (Field const& a, Field const& other);
+    bool operator != (Field const& a, Field const& other);
