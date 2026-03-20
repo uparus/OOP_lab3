@@ -1,22 +1,31 @@
 #include <iostream>
 #include <vector>
-#include <conio.h>
+#include <algorithm>
+#include <random>
+#include <ctime>
 #include "Field.h"
 using namespace std;
 
-Field::Field(size_t const& size = 4) : size(size) {
+Field::Field(size_t const& size) : size(size), field(new int[size * size]), zeroIndex(size* size - 1){
     generateStartField(size);
 }
-void Field::generateStartField(size_t const& size) {
-    zeroIndex = size * size - 1;
-    field = new int[size * size];
 
+bool operator==(Field const& a, Field const& other) {
+    return (a.getSize() == other.getSize() && a.getField() == other.getField() && a.getZeroIndex() == other.getZeroIndex());
+}
+bool operator!=(Field const& a, Field const& other) {
+    return !(a.getSize() == other.getSize() && a.getField() == other.getField() && a.getZeroIndex() == other.getZeroIndex());
+}
+void Field::generateStartField(size_t const& size) {
+    /*this->size = size;
+    field = new int[size * size];*/
     for (size_t i = 0; i < size * size - 1; i++) {
         field[i] = i + 1;
     }
 
     field[size * size - 1] = 0;
 }
+
 size_t Field::getSize() const { return size; }
 size_t Field::getZeroIndex() const { return zeroIndex; }
 vector<int> Field::getField() const {
@@ -55,3 +64,28 @@ void Field::shiftRight() {
         zeroIndex = newIndex;
     }
 }
+
+enum shuffleOption { SHIFT_RIGHT = 1, SHIFT_LEFT = 2, SHIFT_UP = 3, SHIFT_DOWN = 4 };
+void Field::shuffleField() {
+    srand(time(NULL));
+    const int shuffleAmount = 100;
+    for (int i = 0; i < shuffleAmount; i++) {
+        int shuffleOption = 1 + rand() % (4 - 1 + 1);
+        switch (shuffleOption) {
+        case shuffleOption::SHIFT_RIGHT:
+            shiftRight();
+            break;
+        case shuffleOption::SHIFT_LEFT:
+            shiftLeft();
+            break;
+        case shuffleOption::SHIFT_UP:
+            shiftUp();
+            break;
+        case shuffleOption::SHIFT_DOWN:
+            shiftDown();
+            break;
+        }
+    }
+}
+     
+   
